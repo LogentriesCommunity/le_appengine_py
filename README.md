@@ -30,12 +30,12 @@ In-Process Logging
 
 To Enable In-Process logging in your app, you must first import both logging and le in your main file for the app,
 like so:
-import logging, le
+            import logging, le
 
 and then add the following lines to your app's main definition in chosen main file:
 
         if len(logging.getLogger('').handlers) <= 1:
-   logging.getLogger('').addHandler(le.InProcess(key, location))
+           logging.getLogger('').addHandler(le.InProcess(key, location))
 
 You will notice the two parameters above called key and location.
 
@@ -44,7 +44,8 @@ You will notice the two parameters above called key and location.
 
 Once this is done properly, you can use the python logging module as normal and it will log to Logentries also.
 
-For example, logging.info("informational message")
+For example:  
+                logging.info("informational message")
                 logging.warn("warning message")
                 logging.crit("critical message")
 
@@ -70,21 +71,23 @@ Then you must add the worker url which will handle the background logging.
 
 In your app.yaml add:
 
-handlers:
-  - url: /worker
-    script: main.py
-    login: admin # This ensures that the worker url can only be accessed by the administator
+     handlers:
+     - url: /worker
+       script: main.py
+       login: admin 
+
+'login: admin' ensures that the worker url can only be accessed by the administator
 
 The main.py file mentioned above relates to your main file for the app. The following lines must be 
 inserted in that main file. These define the class for the worker url page.
 
-class MyWorker(webapp.RequestHandler):
+    class MyWorker(webapp.RequestHandler):
 
-    def post(self):
-        rpc = urlfetch.create_rpc()
-        msg = self.request.get('msg')
-        addr = self.request.get('addr')
-        urlfetch.make_fetch_call(rpc, addr, payload = msg, method=urlfetch.PUT)
+       def post(self):
+          rpc = urlfetch.create_rpc()
+          msg = self.request.get('msg')
+          addr = self.request.get('addr')
+          urlfetch.make_fetch_call(rpc, addr, payload = msg, method=urlfetch.PUT)
 
 
 Then in your webapp.WSGIApplication(...) definition in the main file add the following:
@@ -96,7 +99,8 @@ connects that url to the class defined above.
 
 Once this is done, you can use the python logging module as normal and it will log to Logentries also.
 
-For example, logging.info("informational message")
+For example:
+                logging.info("informational message")
                 logging.warn("warning message")
                 logging.crit("critical message")
 
@@ -120,20 +124,20 @@ You will notice the two parameters above called key and location.
 
 Create a file called backends.yaml with the following contents:
 
-backends:
-- name: worker
-  class: B1
-  instances: 1
-  start: backend.py
+   backends:
+   - name: worker
+     class: B1
+     instances: 1
+     start: backend.py
 
 
 Create a file called queue.yaml with the following contents:
 
-queue:
-- name: pull-queue
-  mode: pull
-  acl:
-  - user_email: "put_your_email_here"
+   queue:
+   - name: pull-queue
+     mode: pull
+     acl:
+     - user_email: "put_your_email_here"
   
 
 

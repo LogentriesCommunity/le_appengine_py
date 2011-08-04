@@ -1,3 +1,14 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+#
+# Logentries Python monitoring agent
+# Copyright 2010,2011 Logentries, Jlizard
+# Mark Lacomber <marklacomber@gmail.com>
+#
+
+VERSION = "1.0"
+
 import logging
 from google.appengine.api import urlfetch
 

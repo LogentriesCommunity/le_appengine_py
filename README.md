@@ -71,10 +71,10 @@ Then you must add the worker url which will handle the background logging.
 
 In your app.yaml add:
 
-     handlers:
-     - url: /worker
-       script: main.py
-       login: admin 
+                       handlers:
+                       - url: /worker
+                         script: main.py
+                         login: admin 
 
 'login: admin' ensures that the worker url can only be accessed by the administator
 
@@ -124,20 +124,20 @@ You will notice the two parameters above called key and location.
 
 Create a file called backends.yaml with the following contents:
 
-   backends:
-   - name: worker
-     class: B1
-     instances: 1
-     start: backend.py
+         backends:
+         - name: worker
+           class: B1
+           instances: 1
+           start: backend.py
 
 
 Create a file called queue.yaml with the following contents:
 
-   queue:
-   - name: pull-queue
-     mode: pull
-     acl:
-     - user_email: "put_your_email_here"
+        queue:
+        - name: pull-queue
+          mode: pull
+          acl:
+          - user_email: "put_your_email_here"
   
 
 

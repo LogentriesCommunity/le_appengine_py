@@ -43,7 +43,6 @@ You will notice the two parameters above called key and location.
   - Location is the name of your host on logentries followed by the name of the log, e.g 'localhost/test.log'
 
 Once this is done properly, you can use the python logging module as normal and it will log to Logentries also.
-
 For example:  
                 logging.info("informational message")
                 logging.warn("warning message")
@@ -98,7 +97,6 @@ If you chose a different url for your worker in the app.yaml setup, be sure to c
 connects that url to the class defined above.
 
 Once this is done, you can use the python logging module as normal and it will log to Logentries also.
-
 For example:
                 logging.info("informational message")
                 logging.warn("warning message")
@@ -140,4 +138,9 @@ Create a file called queue.yaml with the following contents:
           - user_email: "put_your_email_here"
   
 
+Once this is done, you can use the python logging module as normal and it will log to Logentries also.
+For example:
+                logging.info("informational message")
+                logging.warn("warning message")
+                logging.crit("critical message")
 

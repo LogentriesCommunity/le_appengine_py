@@ -30,7 +30,8 @@ In-Process Logging
 
 To Enable In-Process logging in your app, you must first import both logging and le in your main file for the app,
 like so:
-            import logging, le
+
+        import logging, le
 
 and then add the following lines to your app's main definition in chosen main file:
 
@@ -44,15 +45,17 @@ You will notice the two parameters above called key and location.
 
 Once this is done properly, you can use the python logging module as normal and it will log to Logentries also.
 For example:  
-                logging.info("informational message")
-                logging.warn("warning message")
-                logging.crit("critical message")
+
+            logging.info("informational message")
+            logging.warn("warning message")
+            logging.crit("critical message")
 
 Push-Queue Logging
 ------------------
 
 To Enable Push-Queue logging in your app, you must first import both logging and le in your main file for the app,
 like so:
+
          import logging, le
          from google.appengine.api import urlfetch # urlfetch is also imported from appengine api
 
@@ -70,10 +73,10 @@ Then you must add the worker url which will handle the background logging.
 
 In your app.yaml add:
 
-                       handlers:
-                       - url: /worker
-                         script: main.py
-                         login: admin 
+         handlers:
+         - url: /worker
+           script: main.py
+           login: admin 
 
 'login: admin' ensures that the worker url can only be accessed by the administator
 
@@ -98,9 +101,10 @@ connects that url to the class defined above.
 
 Once this is done, you can use the python logging module as normal and it will log to Logentries also.
 For example:
-                logging.info("informational message")
-                logging.warn("warning message")
-                logging.crit("critical message")
+
+           logging.info("informational message")
+           logging.warn("warning message")
+           logging.crit("critical message")
 
 
 Pull-Queue Logging
@@ -108,6 +112,7 @@ Pull-Queue Logging
 
 To Enable Pull-Queue Logging on your app, you must first import both logging and le in your main file for the app,
 like so:
+
          import logging, le
 
 and then add the following lines to your main definition in the file:
@@ -140,7 +145,8 @@ Create a file called queue.yaml with the following contents:
 
 Once this is done, you can use the python logging module as normal and it will log to Logentries also.
 For example:
-                logging.info("informational message")
-                logging.warn("warning message")
-                logging.crit("critical message")
+
+          logging.info("informational message")
+          logging.warn("warning message")
+          logging.crit("critical message")
 

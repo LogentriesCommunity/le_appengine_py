@@ -10,7 +10,7 @@
 VERSION = "1.0"
 
 import logging
-from google.appengine.api import urlfetch
+from google.appengine.api import taskqueue
 
 class PushQueue(logging.Handler):
 

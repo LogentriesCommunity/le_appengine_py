@@ -97,7 +97,7 @@ inserted in that main file. These define the class for the worker url page.
 
 Then in your webapp.WSGIApplication(...) definition in the main file add the following:
 
-('/worker', MyWorker)
+          ('/worker', MyWorker)
 
 If you chose a different url for your worker in the app.yaml setup, be sure to change that here also, as this
 connects that url to the class defined above.

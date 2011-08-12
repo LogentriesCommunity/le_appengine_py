@@ -16,7 +16,6 @@ class LeBackend():
 
     def __init__(self):
         self.addr = 'api.logentries.com'
-	self.location = '/%s/hosts/%s/?realtime=1'
 	self.conn = None
 	self.makeConn()
 

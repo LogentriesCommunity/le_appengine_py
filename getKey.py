@@ -27,7 +27,8 @@ except ImportError: die( 'NOTE: Please install Python "SSL" module')
 try:
   	import json
 except ImportError:
-	try: import simplejson 
+	try: 
+		import simplejson 
         except ImportError: die( 'NOTE: Please install Python "simplejson" package (python-simplejson) or a newer Python (2.6).')
 
 def obtainKey():

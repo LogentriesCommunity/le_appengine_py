@@ -23,7 +23,7 @@ that expect high logging volumes.
 
 Before implementing your chosen option, you need to create an account on Logentries. Once you have done this,
 you will need to download the getKey.py script on github which is necessary for getting your user-key.
-This user-key is required for each of the steps listed below and is referred to below simply as key.key
+This user-key is required for each of the steps listed below and is referred to below simply as key.
 
 Once you have downloaded the script run it as follows `python getKey.rb --key`.  It will prompt you for
 your login credentials and then print out your user-key to be used below.

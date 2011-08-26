@@ -81,7 +81,7 @@ def register(host = 'AppEngine', fileName = 'AppEngine.log'):
 
 	http = httplib.HTTPSConnection(LE_SERVER_API, LE_SERVER_PORT)
 
-	request = "distver=hero&name=%s&distname=Debian&hostname=Heroku&request=register&system=Linux&user_key=%s" %(host, user_key)
+	request = "distver=hero&name=%s&distname=Debian&hostname=AppEngine&request=register&system=Linux&user_key=%s" %(host, user_key)
 
 	http.request('POST', '/', request)
 

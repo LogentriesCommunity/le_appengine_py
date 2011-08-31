@@ -112,12 +112,14 @@ Finally add the following to your queue.yaml file or create one if needs be:
              
 These are simply the settings for the pushqueue that our logger will use.
 
-Once this is done, you can use the python logging module as normal and it will log to Logentries also.
-For example:
+Once this is done properly, simple import logging in the files you wish to log from and use the python 
+logging module as normal for it to log to Logentries also.
 
-           logging.info("informational message")
-           logging.warn("warning message")
-           logging.crit("critical message")
+For example:  
+
+            logging.info("informational message")
+            logging.warn("warning message")
+            logging.crit("critical message")
 
 
 Pull-Queue Logging
@@ -147,25 +149,26 @@ You will notice the two parameters above called key and location.
 Create a file called backends.yaml with the following contents:
 
          backends:
-         - name: worker
+         - name: logentriesworker
            class: B1
            instances: 1
-           start: backend.py
+           start: logentriesbackend.py
 
 
 Create a file called queue.yaml with the following contents:
 
         queue:
-        - name: pull-queue
+        - name: logentries_pull_queue
           mode: pull
           acl:
           - user_email: "put_your_email_here"
   
 
-Once this is done, you can use the python logging module as normal and it will log to Logentries also.
-For example:
+Once this is done properly, simple import logging in the files you wish to log from and use the python 
+logging module as normal for it to log to Logentries also.
 
-          logging.info("informational message")
-          logging.warn("warning message")
-          logging.crit("critical message")
+For example:  
 
+            logging.info("informational message")
+            logging.warn("warning message")
+            logging.crit("critical message")

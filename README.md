@@ -143,6 +143,8 @@ Create a file called queue.yaml with the following contents:
         queue:
         - name: logentries-pull-queue
           mode: pull
+          retry_parameters:
+            task_retry_limit: 1
           acl:
           - user_email: "put_your_email_here"
   

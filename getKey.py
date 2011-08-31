@@ -105,6 +105,9 @@ def register(host = 'AppEngine', fileName = 'AppEngine.log'):
 
 	print resp.reason
 
+	print "Successfully Created Host %s and Log %s" %(host, fileName)
+	print "Enter the following format as location in your config file:  '%s/%s'" %(host, fileName) 
+
 
 def printUsage():
 	print "\nUsage: python getKey.py [options] <parameter(s)>"

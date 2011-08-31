@@ -6,7 +6,7 @@
 # Copyright 2010,2011 Logentries, Jlizard
 # Mark Lacomber <marklacomber@gmail.com>
 #
-
+import wsgiref.handlers
 from google.appengine.ext import webapp
 from google.appengine.api import urlfetch
 from google.appengine.api import taskqueue
@@ -16,6 +16,14 @@ import logging
 def init(key, location):
 	if len(logging.getLogger('').handlers) <= 1:
 		logging.getLogger('').addHandler(PushQueue(key, location))
+
+class LogentriesWorker(webapp.RequestHandler):
+
+   	def post(self):
+      		rpc = urlfetch.create_rpc()
+      		msg = self.request.get('msg')
+      		addr = self.request.get('addr')
+      		urlfetch.make_fetch_call(rpc, addr, payload = msg, method=urlfetch.PUT, headers={'content-length':str(len(msg))})
 
 
 class PushQueue(logging.Handler):
@@ -30,7 +38,7 @@ class PushQueue(logging.Handler):
 
     def send(self, msg):
 
-        taskqueue.add(queue_name='logentries-push-queue', url='/logentriesworker', params={'msg':msg, 'addr':self.addr})
+        taskqueue.add(url='/logentriesworker', params={'msg':msg, 'addr':self.addr})
 
 
     def handleError(self, record):
@@ -51,13 +59,14 @@ class PushQueue(logging.Handler):
         logging.Handler.close(self)
 
 
-class LogentriesWorker(webapp.RequestHandler):
+def main():
 
-   	def post(self):
-      		rpc = urlfetch.create_rpc()
-      		msg = self.request.get('msg')
-      		addr = self.request.get('addr')
-      		urlfetch.make_fetch_call(rpc, addr, payload = msg, method=urlfetch.PUT, headers={'content-length':str(len(msg))})
-		self.response.set_status(200)
+	application = webapp.WSGIApplication([('/logentriesworker', LogentriesWorker)], debug=True)
+
+	wsgiref.handlers.CGIHandler().run(application)
+
+if __name__ =='__main__':
+	main()
+
 
 

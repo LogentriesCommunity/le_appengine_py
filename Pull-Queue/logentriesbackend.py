@@ -69,7 +69,7 @@ MIN_MEDIUM = 300
 
 http = LogentriesBackend()
 
-queue = taskqueue.Queue('logentries_pull_queue')    #  Must match name of queue as set in queue.yaml file
+queue = taskqueue.Queue('logentries-pull-queue')    #  Must match name of queue as set in queue.yaml file
 
 while True:
 	tasks = queue.lease_tasks(60, 1000)

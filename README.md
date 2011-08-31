@@ -141,7 +141,7 @@ Create a file called backends.yaml with the following contents:
 Create a file called queue.yaml with the following contents:
 
         queue:
-        - name: logentries_pull_queue
+        - name: logentries-pull-queue
           mode: pull
           acl:
           - user_email: "put_your_email_here"

@@ -93,6 +93,17 @@ You will notice the two parameters above called key and location.
   
   - Location is the name of your host on logentries followed by the name of the log, e.g 'hostname/logname'
   Running `python getKey.py --register` will set up the following default   `AppEngine/AppEngine.log` 
+  
+Finally add the following to your queue.yaml file or create one if needs be:
+
+         queue:
+         - name: logentries
+           rate: 5/s
+           retry_parameters:
+             task_retry_limit: 1
+             task_age_limit: 5s
+             
+These are simply the settings for the pushqueue that our logger will use.
 
 Once this is done, you can use the python logging module as normal and it will log to Logentries also.
 For example:

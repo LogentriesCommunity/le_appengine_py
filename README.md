@@ -104,7 +104,7 @@ You will notice the two parameters above called key and location.
 Finally add the following to your queue.yaml file or create one if needs be:
 
          queue:
-         - name: logentries
+         - name: logentries-push-queue
            rate: 5/s
            retry_parameters:
              task_retry_limit: 1

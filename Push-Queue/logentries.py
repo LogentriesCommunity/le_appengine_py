@@ -30,7 +30,7 @@ class PushQueue(logging.Handler):
 
     def send(self, msg):
 
-        taskqueue.add(url='/logentriesworker', params={'msg':msg, 'addr':self.addr})
+        taskqueue.add(queue_name='logentries-push-queue', url='/logentriesworker', params={'msg':msg, 'addr':self.addr})
 
 
     def handleError(self, record):

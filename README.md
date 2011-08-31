@@ -37,22 +37,28 @@ called AppEngine.log or you can specify your own names for the host or log using
 In-Process Logging
 ------------------
 
-To Enable In-Process logging in your app, you must first import both logging and le in your main file for the app,
-like so:
+To Enable In-Process logging in your app, you must add logentries.py to your directoy, it is available on here
+at  https://github.com/downloads/logentries/le_appengine_py/In-Process.zip
 
-        import logging, le
+Now if you don't already have an appengine_config.py simple create one in your app's directory.
 
-and then add the following lines to your app's main definition in chosen main file:
+Add the following lines to this config file:
 
-        if len(logging.getLogger('').handlers) <= 1:
-           logging.getLogger('').addHandler(le.InProcess(key, location))
+        import logentries
+
+	logentries.init('KEY', 'LOCATION')
 
 You will notice the two parameters above called key and location.
 
-  - Key is your unique password to the site and must be kept secret.
-  - Location is the name of your host on logentries followed by the name of the log, e.g 'localhost/test.log'
+  - Key is your unique password to the site and must be kept secret. As mentioned earlier this key is
+  obtained by running `python getKey.py --key`
+  
+  - Location is the name of your host on logentries followed by the name of the log, e.g 'hostname/logname'
+  Running `python getKey.py --register` will set up the following default   `AppEngine/AppEngine.log` 
 
-Once this is done properly, you can use the python logging module as normal and it will log to Logentries also.
+Once this is done properly, simple import logging in the files you wish to log from and use the python 
+logging module as normal for it to log to Logentries also.
+
 For example:  
 
             logging.info("informational message")

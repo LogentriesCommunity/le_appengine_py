@@ -25,8 +25,14 @@ Before implementing your chosen option, you need to create an account on Logentr
 you will need to download the getKey.py script on github which is necessary for getting your user-key.
 This user-key is required for each of the steps listed below and is referred to below simply as key.
 
-Once you have downloaded the script run it as follows `python getKey.rb --key`.  It will prompt you for
+Once you have downloaded the script run it as follows `python getKey.py --key`.  It will prompt you for
 your login credentials and then print out your user-key to be used below.
+
+You can create your host(s) and log(s) either using the Logentries UI or with the script mentioned above.
+
+Running the command `python get.py --register` will set up a default host called AppEngine and a default log
+called AppEngine.log or you can specify your own names for the host or log using the parameters:
+`-h hostname` and `-l logname`
 
 In-Process Logging
 ------------------
@@ -56,51 +62,37 @@ For example:
 Push-Queue Logging
 ------------------
 
-To Enable Push-Queue logging in your app, you must first import both logging and le in your main file for the app,
+To Enable Push-Queue logging in your app, you must download 2 files,  le.py and logentries.py available
+
+on this github in the PushQueue folder.
+
+Next you need to import both logging and logentries in the file that you declare
+your webapp.WSGIApplication(...) handlers.
 like so:
 
-         import logging, le
-         from google.appengine.api import urlfetch # urlfetch is also imported from appengine api
+         import logging, logentries
 
-and then add the following lines to your main definition in the file:
+and then add the following handler:
 
-         if len(logging.getLogger('').handlers) <= 1:
-                logging.getLogger('').addHandler(le.PushQueue(key, location))
+         ('/logentriesworker', logentries.LogentriesWorker)
+         
+This is the worker that will be used to transmit the logs to Logentries.
+
+If you don't already have an appengine_config.py file in your app, simple create a new file by that name.
+
+In this file add the following lines:
+
+         import logentries
+         
+         logentries.init('KEY', 'LOCATION')
 
 You will notice the two parameters above called key and location.
 
-  - Key is your unique password to the site and must be kept secret.
-  - Location is the name of your host on logentries followed by the name of the log, e.g 'localhost/test.log'
-
-Then you must add the worker url which will handle the background logging.
-
-In your app.yaml add:
-
-         handlers:
-         - url: /worker
-           script: main.py
-           login: admin 
-
-'login: admin' ensures that the worker url can only be accessed by the administator
-
-The main.py file mentioned above relates to your main file for the app. The following lines must be 
-inserted in that main file. These define the class for the worker url page.
-
-    class MyWorker(webapp.RequestHandler):
-
-       def post(self):
-          rpc = urlfetch.create_rpc()
-          msg = self.request.get('msg')
-          addr = self.request.get('addr')
-          urlfetch.make_fetch_call(rpc, addr, payload = msg, method=urlfetch.PUT)
-
-
-Then in your webapp.WSGIApplication(...) definition in the main file add the following:
-
-          ('/worker', MyWorker)
-
-If you chose a different url for your worker in the app.yaml setup, be sure to change that here also, as this
-connects that url to the class defined above.
+  - Key is your unique password to the site and must be kept secret. As mentioned earlier this key is
+  obtained by running `python getKey.py --key`
+  
+  - Location is the name of your host on logentries followed by the name of the log, e.g 'hostname/logname'
+  Running `python getKey.py --register` will set up the following default   `AppEngine/AppEngine.log` 
 
 Once this is done, you can use the python logging module as normal and it will log to Logentries also.
 For example:

@@ -84,10 +84,9 @@ while True:
 		msg = params['msg']
 		addr = params['addr']
 		fullList.append(msg)
+		queue.delete_tasks(task)
 	finalSend = ''.join(fullList)
 	http.send(finalSend, addr)
-
-	queue.delete_tasks(tasks)
 
 	if len(tasks) >= MIN_HEAVY:
 		time.sleep(HEAVY_LOAD_SLEEP)

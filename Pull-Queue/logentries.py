@@ -22,7 +22,7 @@ class PullQueue(logging.Handler):
 
         logging.Handler.__init__(self)
         self.addr = '%s/hosts/%s' %(key, location)
-	self.queue = taskqueue.Queue('pull-queue')
+	self.queue = taskqueue.Queue('logentries-pull-queue')
 	format = logging.Formatter('%(asctime)s : %(levelname)s, %(message)s', '%a %b %d %H:%M:%S %Z %Y')
 	self.setFormatter(format)
 

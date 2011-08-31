@@ -71,8 +71,7 @@ Push-Queue Logging
 
 To Enable Push-Queue logging in your app, you must add 2 files to your app's directory,  
 le.py and logentries.py available at  
-
-          https://github.com/downloads/logentries/le_appengine_py/Push-Queue.zip
+	https://github.com/downloads/logentries/le_appengine_py/Push-Queue.zip
 
 Next you need to import both logging and logentries in the file that you declare
 your webapp.WSGIApplication(...) handlers.
@@ -128,8 +127,7 @@ Pull-Queue Logging
 
 To Enable Pull-Queue Logging on your app, you must add 2 files to your app's directory,  
 logentriesbackend.py and logentries.py available at  
-
-         https://github.com/downloads/logentries/le_appengine_py/Pull-Queue.zip
+	https://github.com/downloads/logentries/le_appengine_py/Pull-Queue.zip
 
 If you don't already have an appengine_config.py file in your app, simple create a new file by that name.
 

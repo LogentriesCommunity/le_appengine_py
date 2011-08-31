@@ -12,7 +12,7 @@ VERSION = "1.0"
 import httplib, time
 from google.appengine.api import taskqueue
 
-class LeBackend():
+class LogentriesBackend():
 
     def __init__(self):
         self.addr = 'api.logentries.com'
@@ -67,7 +67,7 @@ MIN_MEDIUM = 300
 
 ########################### End of Customizable Variables!
 
-http = LeBackend()
+http = LogentriesBackend()
 
 queue = taskqueue.Queue('logentries_pull_queue')    #  Must match name of queue as set in queue.yaml file
 

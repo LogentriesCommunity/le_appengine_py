@@ -75,8 +75,8 @@ It is available at
 
 In your app.yaml file, add the following to the handlers section:
 
-- url: /logentriesworker
-  script: logentries.py
+	- url: /logentriesworker
+  	  script: logentries.py
 
 This is the url that the logentries worker will use to send the logs
 

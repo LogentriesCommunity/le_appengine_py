@@ -14,7 +14,7 @@ from google.appengine.api import taskqueue
 
 def init(key, location):
 	if len(logging.getLogger('').handlers) <= 1:
-		logging.getLogger('').addHandler(InProcess(key, location))
+		logging.getLogger('').addHandler(PullQueue(key, location))
 
 class PullQueue(logging.Handler):
 

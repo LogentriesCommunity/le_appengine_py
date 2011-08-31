@@ -123,20 +123,26 @@ For example:
 Pull-Queue Logging
 ------------------
 
-To Enable Pull-Queue Logging on your app, you must first import both logging and le in your main file for the app,
-like so:
+To Enable Pull-Queue Logging on your app, you must add 2 files to your app's directory,  
+logentriesbackend.py and logentries.py available at  
 
-         import logging, le
+         https://github.com/downloads/logentries/le_appengine_py/Pull-Queue.zip
 
-and then add the following lines to your main definition in the file:
+If you don't already have an appengine_config.py file in your app, simple create a new file by that name.
 
-         if len(logging.getLogger('').handlers) <= 1:
-                logging.getLogger('').addHandler(le.PullQueue(key, location))
+In this file add the following lines:
+
+         import logentries
+         
+         logentries.init('KEY', 'LOCATION')
 
 You will notice the two parameters above called key and location.
 
-  - Key is your unique password to the site and must be kept secret.
-  - Location is the name of your host on logentries followed by the name of the log, e.g 'localhost/test.log'
+  - Key is your unique password to the site and must be kept secret. As mentioned earlier this key is
+  obtained by running `python getKey.py --key`
+  
+  - Location is the name of your host on logentries followed by the name of the log, e.g 'hostname/logname'
+  Running `python getKey.py --register` will set up the following default   `AppEngine/AppEngine.log` 
 
 Create a file called backends.yaml with the following contents:
 

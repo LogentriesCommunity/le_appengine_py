@@ -44,9 +44,9 @@ Now if you don't already have an appengine_config.py simple create one in your a
 
 Add the following lines to this config file:
 
-        import logentries
+import logentries
 
-	logentries.init('KEY', 'LOCATION')
+logentries.init('KEY', 'LOCATION')
 
 You will notice the two parameters above called key and location.
 

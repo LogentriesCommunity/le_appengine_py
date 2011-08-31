@@ -46,7 +46,7 @@ Add the following lines to this config file:
 
 	import logentries
 
-		logentries.init('KEY', 'LOCATION')
+	logentries.init('KEY', 'LOCATION')
 
 You will notice the two parameters above called key and location.
 

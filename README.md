@@ -73,17 +73,12 @@ To Enable Push-Queue logging in your app, you must add logentries.py to your app
 It is available at  
 	https://github.com/downloads/logentries/le_appengine_py/Push-Queue.zip
 
-Next you need to import logentries in the file that you declare
-your webapp.WSGIApplication(...) handlers.
-like so:
+In your app.yaml file, add the following to the handlers section:
 
-         import logentries
+- url: /logentriesworker
+  script: logentries.py
 
-and then add the following handler:
-
-         ('/logentriesworker', logentries.LogentriesWorker)
-         
-This is the worker that will be used to transmit the logs to Logentries.
+This is the url that the logentries worker will use to send the logs
 
 If you don't already have an appengine_config.py file in your app, simple create a new file by that name.
 
@@ -101,17 +96,6 @@ You will notice the two parameters above called key and location.
   - Location is the name of your host on logentries followed by the name of the log, e.g 'hostname/logname'
   Running `python getKey.py --register` will set up the following default   `AppEngine/AppEngine.log` 
   
-Finally add the following to your queue.yaml file or create one if needs be:
-
-         queue:
-         - name: logentries-push-queue
-           rate: 5/s
-           retry_parameters:
-             task_retry_limit: 1
-             task_age_limit: 5s
-             
-These are simply the settings for the pushqueue that our logger will use.
-
 Once this is done properly, simple import logging in the files you wish to log from and use the python 
 logging module as normal for it to log to Logentries also.
 

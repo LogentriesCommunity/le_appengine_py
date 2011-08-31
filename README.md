@@ -38,7 +38,8 @@ In-Process Logging
 ------------------
 
 To Enable In-Process logging in your app, you must add logentries.py to your directoy, it is available on here
-at  https://github.com/downloads/logentries/le_appengine_py/In-Process.zip
+at  
+	https://github.com/downloads/logentries/le_appengine_py/In-Process.zip
 
 Now if you don't already have an appengine_config.py simple create one in your app's directory.
 

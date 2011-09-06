@@ -28,9 +28,12 @@ class PullQueue(logging.Handler):
 
 
     def send(self, msg):
-
-	task = taskqueue.Task(method='PULL', name = str(random.randrange(1,10000000000)), params={'msg':msg, 'addr':self.addr})
-	self.queue.add(task)
+	try:
+		task = taskqueue.Task(method='PULL', name = str(random.randrange(1,10000000000)), params={'msg':msg, 'addr':self.addr})
+		self.queue.add(task)
+	except apiproxy_errors.OverQuotaError, message:
+		logging.error(message)
+		logging.error("URLFetch API Quota reached, unable to transmit logs to Logentries") 
 
 
     def handleError(self, record):

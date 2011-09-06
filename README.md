@@ -95,6 +95,15 @@ You will notice the two parameters above called key and location.
   
   - Location is the name of your host on logentries followed by the name of the log, e.g 'hostname/logname'
   Running `python getKey.py --register` will set up the following default   `AppEngine/AppEngine.log` 
+
+Create a file called queue.yaml if you don't already have one and enter the following lines:
+
+	queue:
+	- name: logentries-push-queue
+  	  rate: 5/s
+  	  retry_parameters:
+    	    task_retry_limit: 1
+    	    task_age_limit: 10s
   
 Once this is done properly, simply import logging in the files you wish to log from and use the python 
 logging module as normal for it to log to Logentries also.

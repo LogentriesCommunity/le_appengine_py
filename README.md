@@ -41,7 +41,7 @@ To Enable In-Process logging in your app, you must add logentries.py to your dir
 at  
 	https://github.com/downloads/logentries/le_appengine_py/In-Process.zip
 
-Now if you don't already have an appengine_config.py simple create one in your app's directory.
+Now if you don't already have an appengine_config.py simply create one in your app's directory.
 
 Add the following lines to this config file:
 
@@ -69,18 +69,11 @@ For example:
 Push-Queue Logging
 ------------------
 
-To Enable Push-Queue logging in your app, you must add logentries.py to your app's directory,  
-It is available at  
+To Enable Push-Queue logging in your app, you must add logentries.py and logentriessetup.py to your app's directory,  
+They are available at  
 	https://github.com/downloads/logentries/le_appengine_py/Push-Queue.zip
 
-In your app.yaml file, add the following to the handlers section:
-
-	- url: /logentriesworker
-  	  script: logentries.py
-
-This is the url that the logentries worker will use to send the logs
-
-If you don't already have an appengine_config.py file in your app, simple create a new file by that name.
+If you don't already have an appengine_config.py file in your app, simplys create a new file by that name.
 
 In this file add the following lines:
 
@@ -122,7 +115,7 @@ To Enable Pull-Queue Logging on your app, you must add 2 files to your app's dir
 logentriesbackend.py and logentries.py available at  
 	https://github.com/downloads/logentries/le_appengine_py/Pull-Queue.zip
 
-If you don't already have an appengine_config.py file in your app, simple create a new file by that name.
+If you don't already have an appengine_config.py file in your app, simply create a new file by that name.
 
 In this file add the following lines:
 

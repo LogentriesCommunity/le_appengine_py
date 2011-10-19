@@ -24,7 +24,7 @@ that expect high logging volumes.
 Before implementing your chosen option, you need to create an account on Logentries. Once you have done this,
 you will need to obtain your account-key which is necessary for each of the configrations below.
 
-This is achieved by clicking Account in the top left of the Logentries UI and display account-key on the right.
+This is achieved by clicking Account in the top left corner of the Logentries UI and display account-key on the right.
 
 You can set up a log file on Logentries via the UI or with the following python script:
 

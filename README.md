@@ -22,15 +22,15 @@ that expect high logging volumes.
 -----------------------------------------------------------------------------------
 
 Before implementing your chosen option, you need to create an account on Logentries. Once you have done this,
-you will need to download the getKey.py script on github which is necessary for getting your user-key.
-This user-key is required for each of the steps listed below and is referred to below simply as key.
+you will need to obtain your account-key which is necessary for each of the configrations below.
 
-Once you have downloaded the script run it as follows `python getKey.py --key`.  It will prompt you for
-your login credentials and then print out your user-key to be used below.
+This is achieved by clicking Account in the top left of the Logentries UI and display account-key on the right.
 
-You can create your host(s) and log(s) either using the Logentries UI or with the script mentioned above.
+You can set up a log file on Logentries via the UI or with the following python script:
 
-Running the command `python get.py --register` will set up a default host called AppEngine and a default log
+https://github.com/logentries/le_appengine_py/raw/master/getKey.py
+
+To use the script, run `python getKey.py --register` which will set up a default host called AppEngine and a default log
 called AppEngine.log or you can specify your own names for the host or log using the parameters:
 `-h hostname` and `-l logname`
 
@@ -51,8 +51,8 @@ Add the following lines to this config file:
 
 You will notice the two parameters above called key and location.
 
-  - Key is your unique password to the site and must be kept secret. As mentioned earlier this key is
-  obtained by running `python getKey.py --key`
+  - Key is your unique account-key to the site and must be kept secret. As mentioned earlier this key is
+  obtained from the Logentries UI.
   
   - Location is the name of your host on logentries followed by the name of the log, e.g 'hostname/logname'
   Running `python getKey.py --register` will set up the following default   `AppEngine/AppEngine.log` 
@@ -85,8 +85,8 @@ In this file add the following lines:
 
 You will notice the two parameters above called key and location.
 
-  - Key is your unique password to the site and must be kept secret. As mentioned earlier this key is
-  obtained by running `python getKey.py --key`
+  - Key is your unique account-key to the site and must be kept secret. As mentioned earlier this key is
+  obtained from the Logentries UI.
   
   - Location is the name of your host on logentries followed by the name of the log, e.g 'hostname/logname'
   Running `python getKey.py --register` will set up the following default   `AppEngine/AppEngine.log` 
@@ -127,8 +127,8 @@ In this file add the following lines:
 
 You will notice the two parameters above called key and location.
 
-  - Key is your unique password to the site and must be kept secret. As mentioned earlier this key is
-  obtained by running `python getKey.py --key`
+  - Key is your unique account-key to the site and must be kept secret. As mentioned earlier this key is
+  obtained from the Logentries UI.
   
   - Location is the name of your host on logentries followed by the name of the log, e.g 'hostname/logname'
   Running `python getKey.py --register` will set up the following default   `AppEngine/AppEngine.log` 

@@ -12,6 +12,10 @@ VERSION = "1.0"
 import logging
 from google.appengine.api import urlfetch
 
+def init(key, location):
+	if len(logging.getLogger('').handlers) <= 1:
+		logging.getLogger('').addHandler(InProcess(key,location))
+
 class InProcess(logging.Handler):
 
     def __init__(self, key, location):

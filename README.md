@@ -47,11 +47,11 @@ Add the following lines to this config file:
 
 	import logentries
 
-	logentries.init('KEY', 'LOCATION')
+	logentries.init('LOGENTRIES_ACCOUNT_KEY', 'LOGENTRIES_LOCATION')
 
 You will notice the two parameters above called key and location.
 
-  - Key is your unique account-key to the site and must be kept secret. As mentioned earlier this key is
+  - Account-Key is your unique account-key to the site and must be kept secret. As mentioned earlier this key is
   obtained from the Logentries UI.
   
   - Location is the name of your host on logentries followed by the name of the log, e.g 'hostname/logname'
@@ -81,11 +81,11 @@ In this file add the following lines:
 
          import logentries
          
-         logentries.init('KEY', 'LOCATION')
+         logentries.init('LOGENTRIES_ACCOUNT_KEY', 'LOGENTRIES_LOCATION')
 
 You will notice the two parameters above called key and location.
 
-  - Key is your unique account-key to the site and must be kept secret. As mentioned earlier this key is
+  - Account-Key is your unique account-key to the site and must be kept secret. As mentioned earlier this key is
   obtained from the Logentries UI.
   
   - Location is the name of your host on logentries followed by the name of the log, e.g 'hostname/logname'
@@ -123,11 +123,11 @@ In this file add the following lines:
 
          import logentries
          
-         logentries.init('KEY', 'LOCATION')
+         logentries.init('LOGENTRIES_ACCOUNT_KEY', 'LOGENTRIES_LOCATION')
 
 You will notice the two parameters above called key and location.
 
-  - Key is your unique account-key to the site and must be kept secret. As mentioned earlier this key is
+  - Account-Key is your unique account-key to the site and must be kept secret. As mentioned earlier this key is
   obtained from the Logentries UI.
   
   - Location is the name of your host on logentries followed by the name of the log, e.g 'hostname/logname'

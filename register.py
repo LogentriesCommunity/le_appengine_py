@@ -31,30 +31,6 @@ except ImportError:
 		import simplejson 
         except ImportError: die( 'NOTE: Please install Python "simplejson" package (python-simplejson) or a newer Python (2.6).')
 
-def obtainKey():
-	username = raw_input('Username: ')
-	password = getpass.getpass()
-
-	http = httplib.HTTPSConnection(LE_SERVER, LE_SERVER_PORT)
-
-	http.request( 'POST', USER_KEY_API, urllib.urlencode( {'username':username, 'password':password}),
-		{'Referer':'https://logentries.com/login/'})
-
-	resp = http.getresponse()
-
-	if resp.reason != "OK":
-		die("Incorrect Login Details. Please Try Again")
-
-	try:
-		data = json.loads(resp.read())
-	except AttributeError:
-		data = simplejson.loads(resp.read())
-
-	print data['user_key']
-
-	http.close()
-
-
 def register(host = 'AppEngine', fileName = 'AppEngine.log'):
 
 	username = raw_input('Username: ')
@@ -106,13 +82,11 @@ def register(host = 'AppEngine', fileName = 'AppEngine.log'):
 	print resp.reason
 
 	print "Successfully Created Host %s and Log %s" %(host, fileName)
-	print "Enter the following format as location in your config file:  '%s/%s'" %(host, fileName) 
+	print "Enter the following as location in your config file:  '%s/%s'" %(host, fileName) 
 
 
 def printUsage():
-	print "\nUsage: python getKey.py [options] <parameter(s)>"
-	print "\nOptions:\t--key\t\t\t\tRetrieve user key"
-	print "          \t--register <parameter(s)>\tCreate Host and LogFile on Logentries"
+	print "\nUsage: python register.py <parameter(s)>"
 	print "		--help\t\t\t\tShow the current screen"
 	print "\nParameters for  --register:"
 	print "\t\t\t-h Host(Optional)\tName of Host to be created, else Default Host 'AppEngine' will be used"
@@ -122,33 +96,24 @@ def printUsage():
 
 def main():
 
-	if len(sys.argv) < 2:
-		printUsage()
+	if len(sys.argv) == 1:
+		register('AppEngine', 'AppEngine.log')
 	elif len(sys.argv) == 2:
-		if sys.argv[1] == "--key":
-			obtainKey()
-		elif sys.argv[1] == "--register":
-			register()
-		elif sys.argv[1] == "--help" or sys.argv[1] == "help":
-			printUsage()
-		else:
-			printUsage()
+		printUsage()
 	elif len(sys.argv) == 3:
-		printUsage()
-	elif len(sys.argv) == 4:
-		if sys.argv[2] == "-h":
-			register(sys.argv[3], 'AppEngine.log')
-		elif sys.argv[2] == "-l":
-			register('AppEngine', sys.argv[3])
+		if sys.argv[1] == "-h":
+			register(sys.argv[2], 'AppEngine.log')
+		elif sys.argv[1] == "-l":
+			register('AppEngine', sys.argv[2])
 		else:
 			printUsage()
-	elif len(sys.argv) == 5:
+	elif len(sys.argv) == 4:
 		printUsage()
-	elif len(sys.argv) == 6:
-		if sys.argv[2] == "-h" and sys.argv[4] == "-l":
-			register(sys.argv[3], sys.argv[5])
-		elif sys.argv[2] == "-l" and sys.argv[4] == "-h":
-			register(sys.argv[5], sys.argv[3])
+	elif len(sys.argv) == 5:
+		if sys.argv[1] == "-h" and sys.argv[3] == "-l":
+			register(sys.argv[2], sys.argv[4])
+		elif sys.argv[1] == "-l" and sys.argv[3] == "-h":
+			register(sys.argv[4], sys.argv[2])
 		else:
 			printUsage()
 	else:

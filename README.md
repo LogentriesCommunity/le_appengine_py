@@ -26,11 +26,11 @@ you will need to obtain your account-key which is necessary for each of the conf
 
 This is achieved by clicking Account in the top left corner of the Logentries UI and display account-key on the right.
 
-You can set up a log file on Logentries via the UI or with the following python script:
+You can set up a host and log file on Logentries via the UI or with the following python script:
 
-https://github.com/logentries/le_appengine_py/raw/master/getKey.py
+https://github.com/logentries/le_appengine_py/raw/master/register.py
 
-To use the script, run `python getKey.py --register` which will set up a default host called AppEngine and a default log
+To use the script, run `python register.py` which will set up a default host called AppEngine and a default log
 called AppEngine.log or you can specify your own names for the host or log using the parameters:
 `-h hostname` and `-l logname`
 

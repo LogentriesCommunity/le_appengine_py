@@ -66,8 +66,8 @@ For example:
 Push-Queue Logging
 ------------------
 
-To Enable Push-Queue logging in your app, you must add logentries.py and logentriessetup.py to your app's directory,  
-They are available at  
+To Enable Push-Queue logging in your app, you must add logentries.py to your app's directory,  
+It is available at  
 	https://github.com/downloads/logentries/le_appengine_py/Push-Queue.zip
 
 In your app.yaml, add the following section under handlers:

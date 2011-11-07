@@ -55,10 +55,7 @@ You will notice the two parameters above called key and location.
   obtained from the Logentries UI.
   
   - Location is the name of your host on logentries followed by the name of the log, e.g 'hostname/logname'
-  Running `python getKey.py --register` will set up the following default   `AppEngine/AppEngine.log` 
-
-Once this is done properly, simply import logging in the files you wish to log from and use the python 
-logging module as normal for it to log to Logentries also.
+  Running `python register.py` will set up the following default   `AppEngine/AppEngine.log` 
 
 For example:  
 
@@ -96,7 +93,7 @@ You will notice the two parameters above called key and location.
   obtained from the Logentries UI.
   
   - Location is the name of your host on logentries followed by the name of the log, e.g 'hostname/logname'
-  Running `python getKey.py --register` will set up the following default   `AppEngine/AppEngine.log` 
+  Running `python register.py` will set up the following default   `AppEngine/AppEngine.log`  
 
 Create a file called queue.yaml if you don't already have one and enter the following lines:
 
@@ -138,7 +135,7 @@ You will notice the two parameters above called key and location.
   obtained from the Logentries UI.
   
   - Location is the name of your host on logentries followed by the name of the log, e.g 'hostname/logname'
-  Running `python getKey.py --register` will set up the following default   `AppEngine/AppEngine.log` 
+  Running `python register.py` will set up the following default   `AppEngine/AppEngine.log` 
 
 Create a file called backends.yaml with the following contents:
 

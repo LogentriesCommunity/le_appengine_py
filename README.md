@@ -26,20 +26,14 @@ you will need to obtain your account-key which is necessary for each of the conf
 
 This is achieved by clicking Account in the top left corner of the Logentries UI and display account-key on the right.
 
-You can set up a host and log file on Logentries via the UI or with the following python script:
-
-https://github.com/logentries/le_appengine_py/raw/master/register.py
-
-To use the script, run `python register.py` which will set up a default host called AppEngine and a default log
-called AppEngine.log or you can specify your own names for the host or log using the parameters:
-`-h hostname` and `-l logname`
+You can set up a host and log file on Logentries via the UI:
 
 In-Process Logging
 ------------------
 
 To Enable In-Process logging in your app, you must add logentries.py to your directoy, it is available on here
 at  
-	https://github.com/downloads/logentries/le_appengine_py/In-Process.zip
+	https://github.com/logentries/le_appengine_py/raw/master/Downloads/In-Process.zip
 
 Now if you don't already have an appengine_config.py simply create one in your app's directory.
 
@@ -68,7 +62,7 @@ Push-Queue Logging
 
 To Enable Push-Queue logging in your app, you must add logentries.py to your app's directory,  
 It is available at  
-	https://github.com/downloads/logentries/le_appengine_py/Push-Queue.zip
+	https://github.com/logentries/le_appengine_py/raw/master/Downloads/Push-Queue.zip
 
 In your app.yaml, add the following section under handlers:
 
@@ -119,7 +113,7 @@ Pull-Queue Logging
 
 To Enable Pull-Queue Logging on your app, you must add 2 files to your app's directory,  
 logentriesbackend.py and logentries.py available at  
-	https://github.com/downloads/logentries/le_appengine_py/Pull-Queue.zip
+	https://github.com/logentries/le_appengine_py/raw/master/Downloads/Pull-Queue.zip
 
 If you don't already have an appengine_config.py file in your app, simply create a new file by that name.
 

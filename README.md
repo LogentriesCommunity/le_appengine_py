@@ -1,6 +1,9 @@
 Logging To Logentries from Google AppEngine using Python
 ========================================================
 
+*This plug in will no longer be officially supported or maintained by Logentries.<br>
+If you would be interested in maintaining this project, please contact support@logentries.com.*
+
 Logentries currently provides 3 methods of logging to our servers.
 
 In-Process Logging, Push-Queue Logging and Pull-Queue Logging.
